@@ -42,7 +42,7 @@ dependencies:
   # Export and sharing dependencies
   pdf: ^3.10.7
   printing: ^5.11.0
-  path_provider: ^2.0.15
+  path_provider: ^2.1.0
   share_plus: ^12.0.1
   open_file: ^3.3.2  # Pour ouvrir les fichiers PDF
 

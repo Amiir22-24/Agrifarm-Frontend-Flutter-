@@ -503,13 +503,13 @@ class _RapportScreenState extends State<RapportScreen> {
   String _getPeriodeIcon(String periode) {
     switch (periode.toLowerCase()) {
       case 'jour':
-        return '📅';
+        return 'J';
       case 'semaine':
-        return '📊';
+        return 'S';
       case 'mois':
-        return '📈';
+        return 'M';
       default:
-        return '📄';
+        return '?';
     }
   }
 
@@ -921,7 +921,7 @@ class RapportDetailScreen extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  _getPeriodeIcon(rapport.periode),
+                  rapport.iconePeriode,
                   style: const TextStyle(fontSize: 32),
                 ),
                 const SizedBox(width: 16),
@@ -1259,13 +1259,13 @@ class RapportDetailScreen extends StatelessWidget {
   String _getPeriodeIcon(String periode) {
     switch (periode.toLowerCase()) {
       case 'jour':
-        return '📅';
+        return 'J';
       case 'semaine':
-        return '📊';
+        return 'S';
       case 'mois':
-        return '📈';
+        return 'M';
       default:
-        return '📄';
+        return '?';
     }
   }
 

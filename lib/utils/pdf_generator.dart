@@ -19,7 +19,7 @@ class PdfGenerator {
   static const PdfColor lightGreenBorder = PdfColor.fromInt(0xFF81C784);
   static const PdfColor grayLight = PdfColor.fromInt(0xFFF3F4F6);
   static const PdfColor grayDark = PdfColor.fromInt(0xFF374151);
-  static const PdfColor textWhite = PdfColor.fromInt(0xFFFFFFFF);
+  static const PdfColor textWhite = PdfColor.fromInt(0xFFFFFFFF); 
   static const PdfColor textWhiteDim = PdfColor.fromInt(0xFFE0E0E0);
   
   /// Generer un PDF A3 professionnel a partir d'un rapport

@@ -121,16 +121,16 @@ class Rapport {
   String get iconePeriode {
     switch (periode.toLowerCase()) {
       case 'jour':
-        return '📅';
+        return 'J';
       case 'semaine':
-        return '📊';
+        return 'S';
       case 'mois':
-        return '📈';
+        return 'M';
       default:
-        return '📄';
+        return '?';
     }
   }
-  
+
   // Alias pour compatibilité avec l'ancien code
   String get typeIcon => iconePeriode;
   

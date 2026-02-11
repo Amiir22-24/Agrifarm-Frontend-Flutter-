@@ -1,8 +1,8 @@
 // lib/widgets/rapports/report_content_widget.dart
 import 'package:flutter/material.dart';
 
-/// Widget pour afficher le contenu formaté du rapport avec émojis et sections
-/// Le contenu est formaté avec des émojis par le backend
+/// Widget pour afficher le contenu formaté du rapport professionnel
+/// Le contenu est formaté en sections professionnelles sans émojis
 class ReportContentWidget extends StatelessWidget {
   final String contenu;
   final bool selectable;
@@ -19,27 +19,69 @@ class ReportContentWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lines = contenu.split('\n');
+    final widgets = <Widget>[];
+
+    for (var line in lines) {
+      if (line.startsWith('================================================================================')) {
+        widgets.add(const Divider(height: 16, thickness: 1));
+      } else if (line.startsWith('SECTION')) {
+        widgets.add(Padding(
+          padding: const EdgeInsets.only(top: 16, bottom: 8),
+          child: Text(
+            line,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+              color: Colors.blueGrey,
+            ),
+          ),
+        ));
+      } else if (line.startsWith('6.')) {
+        widgets.add(Padding(
+          padding: const EdgeInsets.only(top: 12, bottom: 4),
+          child: Text(
+            line,
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 14,
+            ),
+          ),
+        ));
+      } else if (line.startsWith('--------------------------------------------------------------------------------')) {
+        continue;
+      } else if (line.startsWith('- ')) {
+        widgets.add(Padding(
+          padding: const EdgeInsets.only(left: 16, top: 4, bottom: 4),
+          child: Text(
+            line,
+            style: const TextStyle(
+              fontFamily: 'monospace',
+              fontSize: 13,
+            ),
+          ),
+        ));
+      } else if (line.trim().isNotEmpty) {
+        widgets.add(Padding(
+          padding: const EdgeInsets.only(top: 4),
+          child: Text(
+            line,
+            style: const TextStyle(
+              fontFamily: 'monospace',
+              fontSize: 13,
+              height: 1.4,
+            ),
+          ),
+        ));
+      }
+    }
+
     return SingleChildScrollView(
       padding: padding,
-      child: selectable
-          ? SelectableText(
-              contenu,
-              style: customStyle ??
-                  const TextStyle(
-                    fontFamily: 'monospace',
-                    fontSize: 14,
-                    height: 1.5,
-                  ),
-            )
-          : Text(
-              contenu,
-              style: customStyle ??
-                  const TextStyle(
-                    fontFamily: 'monospace',
-                    fontSize: 14,
-                    height: 1.5,
-                  ),
-            ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: widgets,
+      ),
     );
   }
 }
